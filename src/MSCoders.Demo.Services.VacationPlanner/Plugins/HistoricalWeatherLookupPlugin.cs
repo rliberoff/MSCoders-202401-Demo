@@ -19,17 +19,10 @@ internal sealed class HistoricalWeatherLookupPlugin(DaprClient daprClient)
     {
         logger.LogDebug($@"{nameof(HistoricalWeatherLookupAsync)} ==> {nameof(location)} : {location}, {nameof(monthOfYear)}: {monthOfYear}");
 
-        try
-        {
-            using var httpRequest = daprClient.CreateInvokeMethodRequest(HttpMethod.Get, @"historical-weather-lookup", $@"historical-weather-lookup?location={location}&monthOfYear={monthOfYear}");
+        using var httpRequest = daprClient.CreateInvokeMethodRequest(HttpMethod.Get, @"historical-weather-lookup", $@"historical-weather-lookup?location={location}&monthOfYear={monthOfYear}");
 
-            using var result = await daprClient.InvokeMethodWithResponseAsync(httpRequest, cancellationToken);
+        using var httpResponse = await daprClient.InvokeMethodWithResponseAsync(httpRequest, cancellationToken);
 
-            return await result.Content.ReadAsStringAsync(cancellationToken);
-        }
-        catch (Exception e)
-        {
-            throw;
-        }
+        return await httpResponse.Content.ReadAsStringAsync(cancellationToken);
     }
 }

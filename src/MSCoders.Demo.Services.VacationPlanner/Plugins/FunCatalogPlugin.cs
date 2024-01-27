@@ -37,9 +37,9 @@ internal sealed class FunCatalogPlugin(DaprClient daprClient)
             @"fun-catalog",
             $@"/catalog/fun?{parameters}");
 
-        using var result = await daprClient.InvokeMethodWithResponseAsync(httpRequest, cancellationToken);
+        using var httpResponse = await daprClient.InvokeMethodWithResponseAsync(httpRequest, cancellationToken);
 
-        var response = await result.Content.ReadAsStringAsync(cancellationToken);
+        var response = await httpResponse.Content.ReadAsStringAsync(cancellationToken);
 
         return response;
     }

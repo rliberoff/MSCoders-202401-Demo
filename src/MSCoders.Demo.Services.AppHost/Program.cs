@@ -21,11 +21,6 @@ var appInsightsConnectionString = builder.Configuration.GetConnectionString(@"Ap
 
 builder.AddDapr();
 
-////var serviceHistoricalWeatherLookup = builder.AddProject<Projects.MSCoders_Demo_Services_HistoricalWeatherLookup>(@"historical-weather-lookup")
-////    .WithEnvironment(@"ConnectionStrings:ApplicationInsights", appInsightsConnectionString)
-////    .WithDaprSidecar()
-////    ;
-
 var serviceFlightsCatalog = builder.AddProject<Projects.MSCoders_Demo_Services_FlightsCatalog>(@"flights-catalog")
     .WithEnvironment(@"ConnectionStrings:ApplicationInsights", appInsightsConnectionString)
     .WithDaprSidecar();
@@ -38,16 +33,15 @@ var serviceHotelsCatalog = builder.AddProject<Projects.MSCoders_Demo_Services_Ho
     .WithEnvironment(@"ConnectionStrings:ApplicationInsights", appInsightsConnectionString)
     .WithDaprSidecar();
 
-////builder.AddProject<Projects.MSCoders_Demo_Bot>(@"mscoders.demo.bot");
+builder.AddProject<Projects.MSCoders_Demo_Bot>(@"bot-backend")
+       .WithEnvironment(@"ConnectionStrings:ApplicationInsights", appInsightsConnectionString)
+       .WithDaprSidecar();
 
 builder.AddProject<Projects.MSCoders_Demo_Services_VacationPlanner>(@"vacation-planner")
        .WithEnvironment(@"ConnectionStrings:ApplicationInsights", appInsightsConnectionString)
-       //.WithReference(serviceHistoricalWeatherLookup)
        .WithReference(serviceFlightsCatalog)
        .WithReference(serviceHotelsCatalog)
        .WithDaprSidecar()
        ;
-
-
 
 builder.Build().Run();

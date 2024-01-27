@@ -15,7 +15,6 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
 {
     Args = args,
     ContentRootPath = Directory.GetCurrentDirectory(),
-    WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot"),
 });
 
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());

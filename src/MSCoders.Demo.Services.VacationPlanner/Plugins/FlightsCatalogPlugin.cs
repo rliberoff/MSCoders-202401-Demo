@@ -43,8 +43,8 @@ internal sealed class FlightsCatalogPlugin(DaprClient daprClient)
             @"flights-catalog",
             $@"/catalog/flights?{parameters}");
 
-        using var result = await daprClient.InvokeMethodWithResponseAsync(httpRequest, cancellationToken);
+        using var httpResponse = await daprClient.InvokeMethodWithResponseAsync(httpRequest, cancellationToken);
 
-        return await result.Content.ReadAsStringAsync(cancellationToken);
+        return await httpResponse.Content.ReadAsStringAsync(cancellationToken);
     }
 }

@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\MSCoders.Demo.Bot\MSCoders.Demo.Bot.csproj" />
         <ProjectReference Include="..\MSCoders.Demo.Services.FlightsCatalog\MSCoders.Demo.Services.FlightsCatalog.csproj" />
         <ProjectReference Include="..\MSCoders.Demo.Services.FunCatalog\MSCoders.Demo.Services.FunCatalog.csproj" />
         <ProjectReference Include="..\MSCoders.Demo.Services.HotelsCatalog\MSCoders.Demo.Services.HotelsCatalog.csproj" />
