@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsAspireHost>true</IsAspireHost>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="appsettings - Copy.Development.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting" Version="8.0.0-preview.2.23619.3" />
+        <PackageReference Include="Aspire.Hosting.Dapr" Version="8.0.0-preview.2.23619.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MSCoders.Demo.Services.FlightsCatalog\MSCoders.Demo.Services.FlightsCatalog.csproj" />
+        <ProjectReference Include="..\MSCoders.Demo.Services.FunCatalog\MSCoders.Demo.Services.FunCatalog.csproj" />
+        <ProjectReference Include="..\MSCoders.Demo.Services.HotelsCatalog\MSCoders.Demo.Services.HotelsCatalog.csproj" />
+        <ProjectReference Include="..\MSCoders.Demo.Services.VacationPlanner\MSCoders.Demo.Services.VacationPlanner.csproj" />
+    </ItemGroup>
+
+</Project>

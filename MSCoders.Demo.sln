@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[ Solution Items ]", "[ Solution Items ]", "{8830C65A-4734-4CE5-BBB4-2357197462F4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		global.json = global.json
+		LICENSE = LICENSE
+		NuGet.config = NuGet.config
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Services.Common", "src\MSCoders.Demo.Services.Common\MSCoders.Demo.Services.Common.csproj", "{F125F5ED-E79C-4291-BE04-C29542AEBAB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Services.FlightsCatalog", "src\MSCoders.Demo.Services.FlightsCatalog\MSCoders.Demo.Services.FlightsCatalog.csproj", "{A59F51CE-0E3C-4013-8F58-123ECF3332F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Services.HotelsCatalog", "src\MSCoders.Demo.Services.HotelsCatalog\MSCoders.Demo.Services.HotelsCatalog.csproj", "{B7D22AD8-5825-4108-8688-EA27B4D1891D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Services.AppHost", "src\MSCoders.Demo.Services.AppHost\MSCoders.Demo.Services.AppHost.csproj", "{5CFB1BE5-B094-46FC-B7F8-D659C35B405A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Bot", "src\MSCoders.Demo.Bot\MSCoders.Demo.Bot.csproj", "{95C8C230-E06E-4AE5-9F98-D9F8888026EC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Services.VacationPlanner", "src\MSCoders.Demo.Services.VacationPlanner\MSCoders.Demo.Services.VacationPlanner.csproj", "{3977B3A2-E8B6-4687-8525-2A977E859437}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Services.FunCatalog", "src\MSCoders.Demo.Services.FunCatalog\MSCoders.Demo.Services.FunCatalog.csproj", "{3E27F104-C50E-44E5-97EF-9B6B86B0A595}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F125F5ED-E79C-4291-BE04-C29542AEBAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F125F5ED-E79C-4291-BE04-C29542AEBAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F125F5ED-E79C-4291-BE04-C29542AEBAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F125F5ED-E79C-4291-BE04-C29542AEBAB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59F51CE-0E3C-4013-8F58-123ECF3332F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59F51CE-0E3C-4013-8F58-123ECF3332F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59F51CE-0E3C-4013-8F58-123ECF3332F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59F51CE-0E3C-4013-8F58-123ECF3332F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D22AD8-5825-4108-8688-EA27B4D1891D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D22AD8-5825-4108-8688-EA27B4D1891D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D22AD8-5825-4108-8688-EA27B4D1891D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D22AD8-5825-4108-8688-EA27B4D1891D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CFB1BE5-B094-46FC-B7F8-D659C35B405A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CFB1BE5-B094-46FC-B7F8-D659C35B405A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CFB1BE5-B094-46FC-B7F8-D659C35B405A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CFB1BE5-B094-46FC-B7F8-D659C35B405A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95C8C230-E06E-4AE5-9F98-D9F8888026EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95C8C230-E06E-4AE5-9F98-D9F8888026EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95C8C230-E06E-4AE5-9F98-D9F8888026EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95C8C230-E06E-4AE5-9F98-D9F8888026EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3977B3A2-E8B6-4687-8525-2A977E859437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3977B3A2-E8B6-4687-8525-2A977E859437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3977B3A2-E8B6-4687-8525-2A977E859437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3977B3A2-E8B6-4687-8525-2A977E859437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E27F104-C50E-44E5-97EF-9B6B86B0A595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E27F104-C50E-44E5-97EF-9B6B86B0A595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E27F104-C50E-44E5-97EF-9B6B86B0A595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E27F104-C50E-44E5-97EF-9B6B86B0A595}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70993713-995B-4CB9-848C-DC559E8C1245}
+	EndGlobalSection
+EndGlobal
