@@ -427,3 +427,6 @@ profile.arm.json
 
 # Files added by manual publishing
 **/.config/
+
+# .env files for local Development
+.local.env
