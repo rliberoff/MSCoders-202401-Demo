@@ -58,16 +58,6 @@ builder.Services.AddOptionsWithValidateOnStart<AzureOpenAIOptions>().BindConfigu
 
 builder.AddServiceDefaults();
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.WithOrigins("*")
-               .WithHeaders("content-type")
-               ;
-    });
-});
-
 builder.Services.AddDaprClient();
 
 builder.Services.AddApplicationInsightsTelemetry(builder.Configuration)
@@ -91,22 +81,20 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection()
-   .UseCors()
-   ;
-
 app.MapPost(@"/vacations/plan", async Task<Results<Ok<VacationPlannerResponse>, ProblemHttpResult>> (VacationPlannerRequest request, [FromServices] VacationPlannerService vacationPlannerService, CancellationToken cancellationToken) =>
 {
     try
     {
-        return TypedResults.Ok(await vacationPlannerService.ResponseAsync(request, cancellationToken));
+        var response = await vacationPlannerService.ResponseAsync(request, cancellationToken);
+
+        return TypedResults.Ok(response);
     }
     catch (Exception exception)
     {
         return TypedResults.Problem(exception.Message);
     }
 })
-.WithName("GetRecommendation")
+.WithName(@"GetVacationPlan")
 .WithOpenApi();
 
 app.Run();

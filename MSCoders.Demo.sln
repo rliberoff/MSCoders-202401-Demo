@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Services.Vaca
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSCoders.Demo.Services.FunCatalog", "src\MSCoders.Demo.Services.FunCatalog\MSCoders.Demo.Services.FunCatalog.csproj", "{3E27F104-C50E-44E5-97EF-9B6B86B0A595}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "MSCoders.Demo.WebChat", "src\MSCoders.Demo.WebChat\MSCoders.Demo.WebChat.esproj", "{7C90AEEB-6326-4AA6-AD6C-BCACF93AE1AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,12 @@ Global
 		{3E27F104-C50E-44E5-97EF-9B6B86B0A595}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E27F104-C50E-44E5-97EF-9B6B86B0A595}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E27F104-C50E-44E5-97EF-9B6B86B0A595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C90AEEB-6326-4AA6-AD6C-BCACF93AE1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C90AEEB-6326-4AA6-AD6C-BCACF93AE1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C90AEEB-6326-4AA6-AD6C-BCACF93AE1AF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7C90AEEB-6326-4AA6-AD6C-BCACF93AE1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C90AEEB-6326-4AA6-AD6C-BCACF93AE1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C90AEEB-6326-4AA6-AD6C-BCACF93AE1AF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

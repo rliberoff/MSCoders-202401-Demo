@@ -1,4 +1,8 @@
-﻿using Encamina.Enmarcha.DependencyInjection;
+﻿using System.Text.Json;
+using System.Text.RegularExpressions;
+
+using Encamina.Enmarcha.Core;
+using Encamina.Enmarcha.DependencyInjection;
 
 using Microsoft.Bot.Builder.Dialogs;
 
@@ -7,7 +11,7 @@ namespace MSCoders.Demo.Bot.Dialogs.Root;
 /// <summary>
 /// Root dialog managing other dialogs within the bot.
 /// </summary>
-[AutoRegisterService(ServiceLifetime.Singleton)]
+[AutoRegisterService(ServiceLifetime.Singleton, typeof(Dialog))]
 internal sealed class RootDialog : Dialog
 {
     private readonly RootDialogConfiguration configuration;
@@ -19,7 +23,7 @@ internal sealed class RootDialog : Dialog
     public RootDialog(RootDialogConfiguration configuration)
     {
         this.configuration = configuration;
-     
+
         TelemetryClient = configuration.BotTelemetryClient;
     }
 
@@ -33,9 +37,10 @@ internal sealed class RootDialog : Dialog
     /// or threads to receive notice of cancellation.</param>
     public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext dc, object options = null, CancellationToken cancellationToken = default)
     {
+        var turnContext = dc.Context;
+        var ask = turnContext.Activity.Text;
+
         // If the user is not asking anything, then end the dialog.
-        var ask = dc.Context.Activity.Text;
-        
         if (string.IsNullOrWhiteSpace(ask))
         {
             return await dc.EndDialogAsync(cancellationToken: cancellationToken);
@@ -49,6 +54,10 @@ internal sealed class RootDialog : Dialog
         using var httpResponse = await configuration.DaprClient.InvokeMethodWithResponseAsync(httpRequest, cancellationToken);
 
         var response = await httpResponse.Content.ReadAsStringAsync(cancellationToken);
+
+        var result = JsonUtils.DeserializeAnonymousType(response, new { Answer = @"" }, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+        await turnContext.SendActivityAsync(Regex.Unescape(result.Answer), cancellationToken: cancellationToken);
 
         return await dc.EndDialogAsync(cancellationToken: cancellationToken);
     }

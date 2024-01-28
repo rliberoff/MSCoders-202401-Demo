@@ -18,10 +18,6 @@ using MSCoders.Demo.Bot.Dialogs.Root;
 using MSCoders.Demo.Services.Common;
 using MSCoders.Demo.Bot.Bots;
 
-var programType = typeof(Program);
-
-var applicationName = programType.Assembly.GetName().Name;
-
 /*
  *  Load Configuration
  */
@@ -44,37 +40,6 @@ builder.Configuration.AddJsonFile($@"appsettings.{builder.Environment.Environmen
                      .AddEnvironmentVariables()
                      ;
 
-////// Load configuration from Azure App Configuration, and set Key Vault client for secrets...
-////var appConfigurationConnectionString = builder.Configuration.GetConnectionString(@"AppConfig");
-
-////if (!string.IsNullOrWhiteSpace(appConfigurationConnectionString))
-////{
-
-////    var azureCredentials = new ChainedTokenCredential(new DefaultAzureCredential(), new EnvironmentCredential());
-
-////    builder.Configuration.AddAzureAppConfiguration(options =>
-////    {
-////        options.Connect(appConfigurationConnectionString)
-////                .ConfigureRefresh(refreshOptions =>
-////                {
-////                    refreshOptions.Register(key: @$"{applicationName}:Sentinel", label: LabelFilter.Null, refreshAll: true);
-////                })
-////               .ConfigureKeyVault(keyVault =>
-////               {
-////                   keyVault.SetCredential(azureCredentials);
-////               })
-////               .Select(KeyFilter.Any) // Load configuration values with no label
-////               .Select(KeyFilter.Any, applicationName)  // Override with any configuration values specific to current application
-////               .ConfigureRefresh(refreshOptions => refreshOptions.Register(@"PromptsBots:MetaPrompt", @"Teams.Bot", refreshAll: true))
-////               ;
-////    }, optional: false);
-////}
-
-////if (!string.IsNullOrWhiteSpace(appConfigurationConnectionString))
-////{
-////    builder.Services.AddAzureAppConfiguration();
-////}
-
 var isDevelopment = builder.Environment.IsDevelopment();
 
 /*
@@ -96,10 +61,6 @@ var applicationInsightsConnectionString = builder.Configuration.GetConnectionStr
 builder.Logging.AddApplicationInsights((telemetryConfiguration) => telemetryConfiguration.ConnectionString = applicationInsightsConnectionString, (_) => { })
                .AddFilter<ApplicationInsightsLoggerProvider>(string.Empty, LogLevel.Trace)
                ;
-
-/*
- *  Options Configuration
- */
 
 /*
  *  Application Services
@@ -152,6 +113,7 @@ builder.Services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>()
 
 // Add bot middlewares...
 builder.Services.AddBotAutoSaveStateMiddleware()
+                .AddBotShowTypingMiddleware()
                 .AddBotConversationStateLoggerMiddleware() // This middleware records in the bot's conversation state the current conversation.
                 ;
 
@@ -159,7 +121,7 @@ builder.Services.AddBotAutoSaveStateMiddleware()
 builder.Services.AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>() // Create the Bot Framework Authentication to be used with the Bot Adapter.
                 .AddSingleton<IBotFrameworkHttpAdapter, BotCloudAdapterWithErrorHandler>() // Create the Bot Adapter with error handling enabled.
                 .AddSingleton<IBotAdapterOptions<BotCloudAdapterWithErrorHandlerBase>, BotCloudAdapterWithErrorHandlerServices>()
-                .AddScoped<IBot, Bot<RootDialog>>()
+                .AddScoped<IBot, Bot>()
                 ;
 
 /*
@@ -173,15 +135,7 @@ if (isDevelopment)
     app.UseDeveloperExceptionPage();
 }
 
-//if (!string.IsNullOrWhiteSpace(appConfigurationConnectionString))
-//{
-//    app.UseAzureAppConfiguration();
-//}
-
-app.UseHttpsRedirection()
-   ////.UseDefaultFiles()
-   ////.UseStaticFiles()
-   .UseRouting()
+app.UseRouting()
    .UseAuthentication()
    .UseAuthorization()
    .UseEndpoints(endpoints =>

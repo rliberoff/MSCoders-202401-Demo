@@ -58,81 +58,6 @@ builder.Services.AddApplicationInsightsTelemetry(builder.Configuration)
                 .AddHealthChecks()
                 ;
 
-/* Define Application Types */
-
-var flightsCatalog = new FlightCatalog()
-{
-    // Madrid to Cancun
-    new FlightInfo
-    {
-        FromDate = new DateOnly(2024, 06, 1),
-        ToDate = new DateOnly(2024, 09, 30),
-        Price = 1000,
-        FromAirport = "Madrid",
-        ToAirport = "Cancun",
-    },
-
-    // Madrid to Dominican Rep.
-    new FlightInfo
-    {
-        FromDate = new DateOnly(2024, 06, 1),
-        ToDate = new DateOnly(2024, 09, 30),
-        Price = 500,
-        FromAirport = "Madrid",
-        ToAirport = "Dominican Republic"
-    },
-
-    // Madrid to Punta Cana
-    new FlightInfo
-    {
-        FromDate = new DateOnly(2024, 06, 1),
-        ToDate = new DateOnly(2024, 09, 30),
-        Price = 800,
-        FromAirport = "Madrid",
-        ToAirport = "Punta Cana",
-    },
-
-    // Madrid to Bahamas
-    new FlightInfo
-    {
-        FromDate = new DateOnly(2024, 06, 1),
-        ToDate = new DateOnly(2024, 09, 30),
-        Price = 900,
-        FromAirport = "Madrid",
-        ToAirport = "Bahamas",
-    },
-
-    // Madrid to Switzerland
-    new FlightInfo
-    {
-        FromDate = new DateOnly(2024, 06, 1),
-        ToDate = new DateOnly(2024, 11, 30),
-        Price = 2000,
-        FromAirport = "Madrid",
-        ToAirport = "Switzerland",
-    },
-
-    // Madrid to Canada
-    new FlightInfo
-    {
-        FromDate = new DateOnly(2024, 02, 1),
-        ToDate = new DateOnly(2024, 11, 30),
-        Price = 1500,
-        FromAirport = "Madrid",
-        ToAirport = "Canada",
-    },
-
-    // Madrid to Munich
-    new FlightInfo
-    {
-        FromDate = new DateOnly(2024, 06, 1),
-        ToDate = new DateOnly(2024, 09, 30),
-        Price = 600,
-        FromAirport = "Madrid",
-        ToAirport = "Munich",
-    },
-};
-
 /* Application Middleware Configuration */
 
 var app = builder.Build();
@@ -144,8 +69,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 app.MapGet(@"/catalog/flights", Results<Ok<IEnumerable<FlightInfo>>, NotFound<NotFoundMessage>> (
     string? fromAirport = null,
@@ -160,7 +83,7 @@ app.MapGet(@"/catalog/flights", Results<Ok<IEnumerable<FlightInfo>>, NotFound<No
 {
     var currentYear = DateTime.Now.Year;
 
-    var flights = flightsCatalog.SearchFlights(new FlightsSearchFilter()
+    var flights = FlightCatalog.DemoFlightCatalog.SearchFlights(new FlightsSearchFilter()
     {
         FromAirport = fromAirport,
         ToAirport = toAirport,

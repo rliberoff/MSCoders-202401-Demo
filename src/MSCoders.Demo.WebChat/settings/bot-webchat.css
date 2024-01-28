@@ -1,0 +1,208 @@
+#mscoders-demo-bot-webchat {
+    height: calc(100% - 110px);
+    width: 100%;
+    border: 1px solid #ececec;
+}
+
+#mscoders-demo-bot-webchat-button {
+    position: absolute;
+    background-image: url("{{$ASSETS_BASE_URL}}button.png");
+    right: 5px;
+    bottom: 10px;
+    z-index: 9999;
+    width: 100px;
+    height: 100px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#mscoders-demo-bot-webchat-button-minimize {
+    font-size: 15px;
+    font-weight: bolder;
+    color: black;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    text-align: right;
+    float: right;
+    margin-right: 10px;
+}
+
+    #mscoders-demo-bot-webchat-button-minimize::before {
+        content: "\2014"; /* CSS code for the `emdash` character */
+    }
+
+#mscoders-demo-bot-webchat-container {
+    right: 10px;
+    bottom: 10px;
+    width: 640px;
+    height: 800px;
+    z-index: 999;
+    position: absolute;
+}
+
+.termsContainer__info {
+  margin-top: 24px;
+}
+
+.webchat__basic-transcript__scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.webchat__basic-transcript__scrollable::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 30px;
+  z-index: 9999;
+}
+
+.webchat__basic-transcript__scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: grey;
+}
+
+#mscoders-demo-bot-webchat-container .resizer--n {
+    width: calc(100% - 10px);
+    border: 10px solid transparent;
+    position: absolute;
+    background-color: transparent;
+    top: -10px;
+    left: -10px;
+    cursor: ns-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#mscoders-demo-bot-webchat-container .resizer--s {
+    width: calc(100% - 10px);
+    border: 10px solid transparent;
+    position: absolute;
+    background-color: transparent;
+    bottom: -10px;
+    left: -10px;
+    cursor: ns-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#mscoders-demo-bot-webchat-container .resizer--w {
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    background-color: transparent;
+    border: 10px solid transparent;
+    bottom: -10px;
+    cursor: ew-resize;
+    height: calc(100% - 10px);
+    left: -10px;
+    position: absolute;
+    right: auto;
+    user-select: none;
+    width: 0;
+}
+
+#mscoders-demo-bot-webchat-container .resizer--e {
+    height: calc(100% - 10px);
+    border: 10px solid transparent;
+    position: absolute;
+    background-color: transparent;
+    bottom: -10px;
+    right: -10px;
+    cursor: ew-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#mscoders-demo-bot-webchat-container .resizer--nw {
+    height: 5px;
+    width: 5px;
+    border: 5px solid transparent;
+    position: absolute;
+    background-color: transparent;
+    top: -5px;
+    left: -5px;
+    cursor: nwse-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#mscoders-demo-bot-webchat-container .resizer--ne {
+    height: 5px;
+    width: 5px;
+    border: 5px solid transparent;
+    position: absolute;
+    background-color: transparent;
+    top: -5px;
+    right: -5px;
+    cursor: nesw-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#mscoders-demo-bot-webchat-container .resizer--sw {
+    height: 5px;
+    width: 5px;
+    border: 5px solid transparent;
+    position: absolute;
+    background-color: transparent;
+    bottom: -5px;
+    left: -5px;
+    cursor: nesw-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#mscoders-demo-bot-webchat-container .resizer--se {
+    height: 5px;
+    width: 5px;
+    border: 5px solid transparent;
+    position: absolute;
+    background-color: transparent;
+    bottom: -5px;
+    right: -5px;
+    cursor: nwse-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#mscoders-demo-bot-webchat-holder {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#mscoders-demo-bot-webchat-header {
+    background-color: white;
+    height: 80px;
+    width: calc(100% + 2px);
+    display: flex;
+    border: 1px solid #ececec;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px 0 10px 10px;
+}
+
+    #mscoders-demo-bot-webchat-header::before {
+        background-image: url("{{$ASSETS_BASE_URL}}header.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+    }
+
+    #mscoders-demo-bot-webchat-header.drag {
+        cursor: grab;
+    }
+
+    #mscoders-demo-bot-webchat-header.dragging {
+        cursor: grabbing;
+    }

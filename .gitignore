@@ -430,3 +430,5 @@ profile.arm.json
 
 # .env files for local Development
 .local.env
+
+**/dist/
