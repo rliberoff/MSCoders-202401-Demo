@@ -5,7 +5,7 @@ using Microsoft.Bot.Builder.Integration.AspNet.Core;
 
 namespace MSCoders.Demo.Bot.Controllers;
 
-public class BotController : BotBaseController
+public sealed class BotController : BotBaseController
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="BotController"/> class.
